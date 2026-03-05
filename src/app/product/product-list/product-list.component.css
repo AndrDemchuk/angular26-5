@@ -1,3 +1,18 @@
-.product-card{
-    max-width: 150px;
+.product-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 50px;
+}
+
+.product-card {
+  max-width: 150px;
+}
+
+mat-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+mat-card {
+  transition: transform 0.2s;
 }
