@@ -4,11 +4,20 @@ import { AppRoutingModule } from './app-routing-module';
 import { ProductModule } from './product/product-module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ProductModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ProductModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule,
+  ],
   providers: [provideBrowserGlobalErrorListeners()],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
