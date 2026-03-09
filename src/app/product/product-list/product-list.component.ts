@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
-import { Product } from '../../models/product/product';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CartService } from '../../cart/cart.service';
+import { Product } from '../../models/product/product';
+import { ProductService } from '../product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-list',
@@ -10,12 +12,27 @@ import { Observable } from 'rxjs';
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
-
   public products$!: Observable<Product[]>;
-  constructor(private productService: ProductService, private cd: ChangeDetectorRef) { }
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private cd: ChangeDetectorRef,
+    private snackbar: MatSnackBar,
+  ) {}
 
   ngOnInit(): void {
-    this.products$ = this.productService.getProducts()
+    this.products$ = this.productService.getProducts();
   }
 
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product).subscribe({
+      next: () => {
+        this.snackbar.open('Product added to cart', '', {
+          duration: 2000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+      },
+    });
+  }
 }
