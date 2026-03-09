@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { CartModule } from './cart/cart-module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
+    CartModule,
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [AppComponent],
