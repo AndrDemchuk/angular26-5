@@ -23,7 +23,8 @@ export class CartService {
     return this.http.delete<void>(this.apiUrl);
   }
 
-  checkout(products: Product[]): Observable<Product[]> {
-    return this.http.post<Product[]>(environment.apiUrl + '/checkout', products);
+  checkout(products: Product[]): Observable<void> {
+    return this.http.post<void>(environment.apiUrl + '/checkout', products);
+    /* void in post so as we`re not intended to receive anything in response (it`s not about what we send) */
   }
 }
